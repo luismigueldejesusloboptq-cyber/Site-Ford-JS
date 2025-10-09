@@ -20,7 +20,7 @@ class Carousel {
       Carousel.Next(); 
       
  
-      Carousel._interval = setInterval(function(){ Carousel.Next(); }, 5000);
+      Carousel._interval = setInterval(function(){ Carousel.Next(); }, 4000);
     } else {
       throw "O método Start precisa de um Array com itens.";
     }

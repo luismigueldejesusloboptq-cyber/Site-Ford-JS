@@ -14,7 +14,7 @@ class Carousel {
     Carousel._carouselTitleDiv = document.getElementById("carousel-title");
     
     if(arr && arr.length > 0){
-      Carousel._sequence = -1;
+      Carousel._sequence = 0;
       Carousel._size = arr.length;
       
       Carousel.Next(); 

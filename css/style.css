@@ -15,7 +15,7 @@ div#carousel {
     height: 100vh;
     width: 90%; 
     max-width: 1400px; 
-    max-height: 650px;
+    max-height: 650px; 
     margin: 0 auto; 
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;

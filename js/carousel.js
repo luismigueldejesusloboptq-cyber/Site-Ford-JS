@@ -12,7 +12,10 @@ class Carousel {
 
     Carousel._carouselDiv = document.getElementById("carousel");
     Carousel._carouselTitleDiv = document.getElementById("carousel-title");
-    
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    nextBtn.addEventListener('click', () => Carousel.Next());
+    prevBtn.addEventListener('click', () => Carousel.Previous());
     if(arr && arr.length > 0){
       Carousel._sequence = 0;
       Carousel._size = arr.length;
@@ -35,7 +38,6 @@ class Carousel {
     } 
     Carousel._sequence = (Carousel._sequence + 1) % Carousel._size;
     const currentItem = carouselArr[Carousel._sequence];
-    
     const imageHtml = `<a href="${currentItem.link}">
       <img src="img/${currentItem.image}" alt="${currentItem.title}">
     </a>`;
@@ -45,4 +47,27 @@ class Carousel {
     Carousel._carouselDiv.innerHTML = imageHtml;
    Carousel._carouselTitleDiv.innerHTML = titleHtml;
  }
+
+ static Previous(){
+  if (!Carousel._carouselDiv || !Carousel._carouselTitleDiv) {
+    console.error("Elementos #carousel ou #carousel-title não encontrados no HTML.");
+    clearInterval(Carousel._interval);
+    return;
+  } 
+  
+  Carousel._sequence = (Carousel._sequence - 1 + Carousel._size) % Carousel._size;
+  
+  const currentItem = carouselArr[Carousel._sequence];
+  const imageHtml = `<a href="${currentItem.link}">
+    <img src="img/${currentItem.image}" alt="${currentItem.title}">
+  </a>`;
+  
+  const titleHtml = `<h2>${currentItem.title}</h2>`;
+
+  Carousel._carouselDiv.innerHTML = imageHtml;
+  Carousel._carouselTitleDiv.innerHTML = titleHtml;
 }
+}
+
+
+

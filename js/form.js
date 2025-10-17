@@ -29,8 +29,10 @@ function Post(form) {
 }
 
 
-function Enviar(nomeDoUsuario) {
 
+
+function Enviar(nomeDoUsuario) {
+    console.log (`${contato}`);
     if (nomeDoUsuario && nomeDoUsuario.trim() !== "") {
         alert('Obrigado sr(a) ' + nomeDoUsuario + ' os seus dados foram encaminhados com sucesso');
     } else {

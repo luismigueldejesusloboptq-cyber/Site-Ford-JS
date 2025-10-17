@@ -8,22 +8,35 @@ class Carousel {
     this.link = link;
   }
   
+  static resetInterval(){
+    clearInterval(Carousel._interval);
+    Carousel._interval = setInterval(function() { Carousel.Next(); }, 4000);
+  }
+
   static Start(arr){
 
     Carousel._carouselDiv = document.getElementById("carousel");
     Carousel._carouselTitleDiv = document.getElementById("carousel-title");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
-    nextBtn.addEventListener('click', () => Carousel.Next());
-    prevBtn.addEventListener('click', () => Carousel.Previous());
+
+    nextBtn.addEventListener('click', () => {
+      Carousel.Next();
+      Carousel.resetInterval(); 
+    });
+
+    prevBtn.addEventListener('click', () => {
+      Carousel.Previous();
+      Carousel.resetInterval(); 
+    });
+
     if(arr && arr.length > 0){
       Carousel._sequence = 0;
       Carousel._size = arr.length;
       
       Carousel.Next(); 
+      Carousel.resetInterval();
       
- 
-      Carousel._interval = setInterval(function(){ Carousel.Next(); }, 4000);
     } else {
       throw "O método Start precisa de um Array com itens.";
     }

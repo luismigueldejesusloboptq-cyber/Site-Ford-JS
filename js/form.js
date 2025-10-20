@@ -21,7 +21,7 @@ function Post(form) {
         form.elements.namedItem("contato").value
     );
 
-    Enviar(data.nome);
+    Enviar(data);
 
     form.reset();
 
@@ -31,10 +31,11 @@ function Post(form) {
 
 
 
-function Enviar(nomeDoUsuario) {
-    console.log (`${contato}`);
-    if (nomeDoUsuario && nomeDoUsuario.trim() !== "") {
-        alert('Obrigado sr(a) ' + nomeDoUsuario + ' os seus dados foram encaminhados com sucesso');
+function Enviar(dadosDoUsuario) {
+    
+    console.log(dadosDoUsuario);
+    if (dadosDoUsuario.nome && dadosDoUsuario.nome.trim() !== "") {
+        alert('Obrigado sr(a) ' + dadosDoUsuario.nome + ' os seus dados foram encaminhados com sucesso');
     } else {
         alert('Por favor, preencha o campo nome.');
     }

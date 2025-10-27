@@ -11,7 +11,15 @@ class contato {
 }
 
 function Post(form) {
+    const termosAceitos = document.getElementById('check1').checked;
 
+   
+    if (!termosAceitos) {
+        alert('Por favor, leia e aceite os Termos e Condições para continuar.');
+        return false; 
+    }
+
+   
     let data = new contato(
         form.elements.namedItem("nome").value,
         form.elements.namedItem("sobrenome").value,
@@ -22,21 +30,16 @@ function Post(form) {
     );
 
     Enviar(data);
-
     form.reset();
-
-    return false;
+    return false; 
 }
 
-
-
-
 function Enviar(dadosDoUsuario) {
-    
     console.log(dadosDoUsuario);
     if (dadosDoUsuario.nome && dadosDoUsuario.nome.trim() !== "") {
-        alert('Obrigado sr(a) ' + dadosDoUsuario.nome + ' os seus dados foram encaminhados com sucesso');
+        alert('Obrigado sr(a) ' + dadosDoUsuario.nome + ', os seus dados foram encaminhados com sucesso');
     } else {
         alert('Por favor, preencha o campo nome.');
     }
 }
+
